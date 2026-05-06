@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Flower - Serwer Minecraft</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212; /* Ciemne tło */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid #333;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(45deg, #ff80ed, #ff0000); /* Kolory kwiatowe/ogniste */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ip-box {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 1.5rem;
+            color: #00ff00; /* Zielony jak w MC */
+            border: 1px dashed #555;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .btn-discord {
+            display: inline-block;
+            background: #5865F2; /* Kolor Discorda */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+        .btn-discord:hover {
+            transform: scale(1.05);
+            background: #4752c4;
+        }
+        .status {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>PLAY FLOWER</h1>
+        <p>Dołącz do najlepszej społeczności Minecraft!</p>
+        
+        <div class="ip-box" onclick="copyIP()">
+            playflower.blackhost.pl
+        </div>
+        <p style="font-size: 0.8rem; color: #666;">(Kliknij w IP, aby skopiować - wkrótce!)</p>
+
+        <br>
+
+        <a href="https://discord.gg/3jE3uZZDFj" target="_blank" class="btn-discord">
+            Wbijaj na Discorda
+        </a>
+
+        <div class="status">Wersja serwera: 1.20.x - 1.21.x</div>
+    </div>
+
+    <script>
+        function copyIP() {
+            const ip = "playflower.blackhost.pl";
+            navigator.clipboard.writeText(ip);
+            alert("Skopiowano IP: " + ip);
+        }
+    </script>
+
+</body>
+</html>
