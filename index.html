@@ -3,161 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Flower (Beta) - Dołącz do nas!</title>
+    <title>Play Flower (Beta) - Poznaj Ekipę!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0fff4; /* Bardzo jasny, miętowy zielony */
-            color: #2d3748;
-            overflow-x: hidden;
-        }
+        body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #f0fff4; color: #2d3748; overflow-x: hidden; }
 
         /* --- Sekcja Główna --- */
-        .hero {
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(200, 250, 210, 0.7) 100%), 
-                        url('https://images.unsplash.com/photo-1599812607874-5f96898d9e2a?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            padding: 20px;
-            border-bottom: 5px solid #a7f3d0;
-        }
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(200, 250, 210, 0.7) 100%), url('https://images.unsplash.com/photo-1599812607874-5f96898d9e2a?q=80&w=2000&auto=format&fit=crop'); background-size: cover; background-position: center; text-align: center; padding: 20px; border-bottom: 5px solid #a7f3d0; }
+        .beta-badge { background-color: #48bb78; color: white; padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; text-transform: uppercase; }
+        h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 800; margin: 0; background: linear-gradient(135deg, #38a169 0%, #ed64a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        .ip-badge { background-color: white; padding: 15px 30px; border-radius: 50px; font-family: monospace; font-size: 1.4rem; color: #2f855a; border: 3px solid #a7f3d0; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .ip-badge:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
 
-        .beta-badge {
-            background-color: #48bb78; /* Zielony */
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* --- Wspólne style sekcji --- */
+        .section-title { text-align: center; margin-top: 60px; margin-bottom: 30px; color: #2d3748; font-size: 2.2rem; font-weight: 800; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 800;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, #38a169 0%, #ed64a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
+        /* --- Tryby --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 60px; }
+        .card { background-color: white; padding: 30px; border-radius: 16px; text-align: center; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .card:hover { transform: translateY(-5px); border-color: #fbb6ce; box-shadow: 0 10px 20px rgba(240, 100, 180, 0.1); border: 1px solid #fbb6ce; }
+        .card h3 { color: #ed64a6; font-size: 1.8rem; margin: 0 0 10px 0; }
 
-        .hero-desc {
-            font-size: 1.2rem;
-            color: #4a5568;
-            max-width: 600px;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
+        /* --- TEAM (Nowa Sekcja) --- */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 80px; }
+        .team-member { background: white; border-radius: 20px; padding: 30px; display: flex; align-items: center; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-left: 6px solid #ed64a6; }
+        .team-info h4 { margin: 0; font-size: 1.3rem; color: #1a202c; }
+        .role { display: inline-block; padding: 3px 12px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; margin-top: 5px; text-transform: uppercase; }
+        .role.owner { background: #fff5f5; color: #e53e3e; border: 1px solid #feb2b2; }
+        .role.admin { background: #ebf8ff; color: #3182ce; border: 1px solid #90cdf4; }
+        .role.gk { background: #faf5ff; color: #805ad5; border: 1px solid #d6bcfa; }
 
-        .ip-badge {
-            background-color: white;
-            padding: 18px 35px;
-            border-radius: 50px;
-            font-family: monospace;
-            font-size: 1.6rem;
-            color: #2f855a;
-            border: 3px solid #a7f3d0;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .ip-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            border-color: #48bb78;
-        }
-
-        /* --- Sekcja Trybów --- */
-        .modes-title { text-align: center; margin-top: 60px; margin-bottom: 40px; color: #2d3748; font-size: 2.5rem; font-weight: 800; }
-        
-        .modes-container {
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .mode-card {
-            background-color: white;
-            padding: 35px;
-            border-radius: 16px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            position: relative;
-        }
-
-        .mode-card:hover {
-            transform: translateY(-8px);
-            border-color: #fbb6ce; /* Różowy akcent na hover */
-            box-shadow: 0 10px 25px rgba(240, 100, 180, 0.1);
-        }
-
-        .mode-card h3 { 
-            color: #ed64a6; /* Różowy */
-            font-weight: 800;
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-        
-        .mode-card p { color: #718096; font-size: 1rem; line-height: 1.6; }
-
-        /* --- Sekcja Discord --- */
-        .discord-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #a7f3d0 0%, #fbb6ce 100%);
-            color: white;
-            border-radius: 30px;
-            max-width: 1000px;
-            margin: 0 auto 60px;
-        }
-
-        .discord-section h2 { font-size: 2.8rem; font-weight: 800; margin-top: 0; color: #1a202c; }
-        .discord-section p { font-size: 1.3rem; color: #2d3748; max-width: 600px; margin: 0 auto 40px; }
-
-        .btn-discord {
-            display: inline-block;
-            background-color: white;
-            color: #5865F2; /* Kolor Discorda na tekście */
-            padding: 18px 45px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.3rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .btn-discord:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transform: scale(1.03);
-            background-color: #f7fafc;
-        }
-
-        /* --- Stopka --- */
-        footer { text-align: center; padding: 40px; color: #a0aec0; font-size: 0.9rem; }
+        /* --- Discord & Footer --- */
+        .discord-section { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #a7f3d0 0%, #fbb6ce 100%); color: white; border-radius: 30px; margin-bottom: 60px; }
+        .btn-discord { display: inline-block; background-color: white; color: #5865F2; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-weight: 800; transition: 0.2s; }
+        .btn-discord:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        footer { text-align: center; padding: 40px; color: #a0aec0; }
     </style>
 </head>
 <body>
@@ -165,52 +48,60 @@
     <section class="hero">
         <div class="beta-badge">Faza Beta</div>
         <h1>PLAY FLOWER</h1>
-        <p class="hero-desc">Tworzymy nową, kwitnącą społeczność Minecraft. Wejdź, przetestuj i pomóż nam zbudować serwer Twoich marzeń!</p>
-        <div class="ip-badge" onclick="copyIP()" title="Kliknij, aby skopiować">
-            playflower.blackhost.pl
-        </div>
+        <div class="ip-badge" onclick="copyIP()">playflower.blackhost.pl</div>
     </section>
 
-    <h2 class="modes-title">Nasze Ogrody Gier</h2>
-    <div class="modes-container">
-        <div class="mode-card">
-            <h3>Survival</h3>
-            <p>Buduj, handluj i przetrwaj w klasycznym, przyjaznym wydaniu.</p>
+    <div class="container">
+        <h2 class="section-title">Nasze Tryby</h2>
+        <div class="grid">
+            <div class="card"><h3>Survival</h3><p>Klasyczna przygoda w przyjaznym wydaniu.</p></div>
+            <div class="card"><h3>OneBlock</h3><p>Zacznij od zera na jednym bloku.</p></div>
+            <div class="card"><h3>SkyWars</h3><p>Walka na podniebnych wyspach.</p></div>
+            <div class="card"><h3>BoxPVP</h3><p>Intensywne starcia na arenie.</p></div>
         </div>
-        <div class="mode-card">
-            <h3>OneBlock</h3>
-            <p>Zacznij od jednego bloku. Rozwijaj go, by stworzyć własny raj.</p>
+
+        <h2 class="section-title">Ekipa Serwera</h2>
+        <div class="team-grid">
+            <!-- Ty jako Właściciel -->
+            <div class="team-member">
+                <div class="team-info">
+                    <h4>domino_domino123</h4>
+                    <span class="role owner">Właściciel / Owner</span>
+                </div>
+            </div>
+
+            <!-- Kubixmar -->
+            <div class="team-member" style="border-left-color: #3182ce;">
+                <div class="team-info">
+                    <h4>Kubixmar (Zeta)</h4>
+                    <span class="role admin">Administrator</span>
+                </div>
+            </div>
+
+            <!-- TiJiih -->
+            <div class="team-member" style="border-left-color: #805ad5;">
+                <div class="team-info">
+                    <h4>TiJiih (MR. Batman)</h4>
+                    <span class="role gk">Główny Kierownik</span>
+                </div>
+            </div>
         </div>
-        <div class="mode-card">
-            <h3>SkyWars</h3>
-            <p>Szybkie bitwy na podniebnych wyspach. Kto przetrwa?</p>
-        </div>
-        <div class="mode-card">
-            <h3>BoxPVP</h3>
-            <p>Czysta walka i dynamiczny postęp. Zostań mistrzem areny.</p>
-        </div>
+
+        <section class="discord-section">
+            <h2>Dołącz do nas!</h2>
+            <p>Bądź częścią naszej rosnącej ekipy.</p>
+            <a href="https://discord.gg/3jE3uZZDFj" target="_blank" class="btn-discord">WEJDŹ NA DISCORDA</a>
+        </section>
     </div>
 
-    <section class="discord-section">
-        <h2>Zostań Pierwszym Ogrodnikiem!</h2>
-        <p>Dołącz do naszej ekipy testerów na Discordzie. Miej wpływ na każdy blok i każdą zasadę na serwerze.</p>
-        <a href="https://discord.gg/3jE3uZZDFj" target="_blank" class="btn-discord">
-            DOŁĄCZ DO DISCORDA
-        </a>
-    </section>
-
-    <footer>
-        &copy; 2026 Play Flower (Beta). Serwer tworzony z pasją przez społeczność.
-    </footer>
+    <footer>&copy; 2026 Play Flower Team. Wszelkie prawa zastrzeżone.</footer>
 
     <script>
         function copyIP() {
-            const ip = "playflower.blackhost.pl";
-            navigator.clipboard.writeText(ip).then(() => {
-                alert("IP Skopiowane! Wklej je w Minecraft (Ctrl+V)");
+            navigator.clipboard.writeText("playflower.blackhost.pl").then(() => {
+                alert("IP Skopiowane!");
             });
         }
     </script>
-
 </body>
 </html>
