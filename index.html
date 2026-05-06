@@ -3,179 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Flower (Beta) - Serwer Minecraft</title>
+    <title>Play Flower (Beta) - Dołącz do nas!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            background: #0f0f0f;
-            color: white;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0fff4; /* Bardzo jasny, miętowy zielony */
+            color: #2d3748;
+            overflow-x: hidden;
         }
 
-        /* Sekcja Główna */
+        /* --- Sekcja Główna --- */
         .hero {
-            height: 65vh;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), 
-                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2000&auto=format&fit=crop'); 
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(200, 250, 210, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1599812607874-5f96898d9e2a?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             text-align: center;
             padding: 20px;
+            border-bottom: 5px solid #a7f3d0;
         }
 
-        .beta-tag {
-            background: #ff80ed;
-            color: black;
-            padding: 5px 15px;
+        .beta-badge {
+            background-color: #48bb78; /* Zielony */
+            color: white;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 0.9rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 800;
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            background: linear-gradient(45deg, #ff80ed, #7a2ff7);
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #38a169 0%, #ed64a6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 5px 15px rgba(255, 128, 237, 0.3));
+            margin-bottom: 10px;
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
 
         .ip-badge {
-            background: #1e1e1e;
-            padding: 15px 30px;
+            background-color: white;
+            padding: 18px 35px;
             border-radius: 50px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.4rem;
-            color: #00ff88;
-            border: 2px solid #333;
-            margin: 25px 0;
+            font-family: monospace;
+            font-size: 1.6rem;
+            color: #2f855a;
+            border: 3px solid #a7f3d0;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .ip-badge:hover {
-            border-color: #00ff88;
             transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #48bb78;
         }
 
-        /* Sekcja Trybów */
-        .modes-title { text-align: center; margin-bottom: 30px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        /* --- Sekcja Trybów --- */
+        .modes-title { text-align: center; margin-top: 60px; margin-bottom: 40px; color: #2d3748; font-size: 2.5rem; font-weight: 800; }
         
         .modes-container {
-            max-width: 1100px;
-            margin: -30px auto 50px;
-            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .mode-card {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 12px;
+            background-color: white;
+            padding: 35px;
+            border-radius: 16px;
             text-align: center;
-            border: 1px solid #222;
-            transition: 0.3s;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            position: relative;
         }
 
         .mode-card:hover {
-            border-color: #ff80ed;
-            background: #222;
+            transform: translateY(-8px);
+            border-color: #fbb6ce; /* Różowy akcent na hover */
+            box-shadow: 0 10px 25px rgba(240, 100, 180, 0.1);
         }
 
-        .mode-card h3 { color: #ff80ed; margin-top: 0; }
-        .mode-card p { color: #999; font-size: 0.9rem; }
+        .mode-card h3 { 
+            color: #ed64a6; /* Różowy */
+            font-weight: 800;
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .mode-card p { color: #718096; font-size: 1rem; line-height: 1.6; }
 
-        /* Discord */
+        /* --- Sekcja Discord --- */
         .discord-section {
             text-align: center;
-            padding: 60px 20px;
-            background: #151515;
-            border-top: 1px solid #222;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #a7f3d0 0%, #fbb6ce 100%);
+            color: white;
+            border-radius: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
         }
+
+        .discord-section h2 { font-size: 2.8rem; font-weight: 800; margin-top: 0; color: #1a202c; }
+        .discord-section p { font-size: 1.3rem; color: #2d3748; max-width: 600px; margin: 0 auto 40px; }
 
         .btn-discord {
             display: inline-block;
-            background: #5865F2;
-            color: white;
+            background-color: white;
+            color: #5865F2; /* Kolor Discorda na tekście */
             padding: 18px 45px;
             text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: 0.3s;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn-discord:hover {
-            box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
-            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: scale(1.03);
+            background-color: #f7fafc;
         }
 
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
+        /* --- Stopka --- */
+        footer { text-align: center; padding: 40px; color: #a0aec0; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="beta-tag">Faza Beta</div>
+        <div class="beta-badge">Faza Beta</div>
         <h1>PLAY FLOWER</h1>
-        <p style="color: #bbb; max-width: 600px;">Tworzymy nową jakość rozgrywki. Wejdź, przetestuj i pomóż nam zbudować najlepszy serwer!</p>
+        <p class="hero-desc">Tworzymy nową, kwitnącą społeczność Minecraft. Wejdź, przetestuj i pomóż nam zbudować serwer Twoich marzeń!</p>
         <div class="ip-badge" onclick="copyIP()" title="Kliknij, aby skopiować">
             playflower.blackhost.pl
         </div>
     </section>
 
-    <h2 class="modes-title">Nasze Tryby</h2>
+    <h2 class="modes-title">Nasze Ogrody Gier</h2>
     <div class="modes-container">
         <div class="mode-card">
             <h3>Survival</h3>
-            <p>Buduj, handluj i przetrwaj w klasycznym wydaniu.</p>
+            <p>Buduj, handluj i przetrwaj w klasycznym, przyjaznym wydaniu.</p>
         </div>
         <div class="mode-card">
             <h3>OneBlock</h3>
-            <p>Jeden blok, tysiące możliwości. Dasz radę?</p>
+            <p>Zacznij od jednego bloku. Rozwijaj go, by stworzyć własny raj.</p>
         </div>
         <div class="mode-card">
             <h3>SkyWars</h3>
-            <p>Szybkie potyczki na wyspach. Tylko dla odważnych.</p>
+            <p>Szybkie bitwy na podniebnych wyspach. Kto przetrwa?</p>
         </div>
         <div class="mode-card">
             <h3>BoxPVP</h3>
-            <p>Czysta walka i szybki postęp. Zostań mistrzem areny.</p>
+            <p>Czysta walka i dynamiczny postęp. Zostań mistrzem areny.</p>
         </div>
     </div>
 
     <section class="discord-section">
-        <h2>Dołącz do ekipy testerów!</h2>
-        <p>Serwer jeszcze nie ruszył pełną parą – bądź jedną z pierwszych osób i miej wpływ na jego rozwój.</p>
-        <br>
+        <h2>Zostań Pierwszym Ogrodnikiem!</h2>
+        <p>Dołącz do naszej ekipy testerów na Discordzie. Miej wpływ na każdy blok i każdą zasadę na serwerze.</p>
         <a href="https://discord.gg/3jE3uZZDFj" target="_blank" class="btn-discord">
-            WEJDŹ NA DISCORDA
+            DOŁĄCZ DO DISCORDA
         </a>
     </section>
 
     <footer>
-        &copy; 2026 Play Flower. Strona stworzona przez społeczność serwera.
+        &copy; 2026 Play Flower (Beta). Serwer tworzony z pasją przez społeczność.
     </footer>
 
     <script>
         function copyIP() {
             const ip = "playflower.blackhost.pl";
             navigator.clipboard.writeText(ip).then(() => {
-                alert("IP Skopiowane! Możesz już dodać serwer do listy w Minecraft.");
+                alert("IP Skopiowane! Wklej je w Minecraft (Ctrl+V)");
             });
         }
     </script>
