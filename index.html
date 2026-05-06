@@ -3,94 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Flower - Serwer Minecraft</title>
+    <title>Play Flower (Beta) - Serwer Minecraft</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #121212; /* Ciemne tło */
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f0f;
             color: white;
+            line-height: 1.6;
+        }
+
+        /* Sekcja Główna */
+        .hero {
+            height: 65vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), 
+                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
             text-align: center;
+            padding: 20px;
         }
-        .container {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
+
+        .beta-tag {
+            background: #ff80ed;
+            color: black;
+            padding: 5px 15px;
             border-radius: 20px;
-            border: 1px solid #333;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 5px;
-            background: linear-gradient(45deg, #ff80ed, #ff0000); /* Kolory kwiatowe/ogniste */
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            background: linear-gradient(45deg, #ff80ed, #7a2ff7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(255, 128, 237, 0.3));
         }
-        .ip-box {
+
+        .ip-badge {
             background: #1e1e1e;
-            padding: 15px;
-            border-radius: 10px;
-            font-family: monospace;
-            font-size: 1.5rem;
-            color: #00ff00; /* Zielony jak w MC */
-            border: 1px dashed #555;
-            margin: 20px 0;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.4rem;
+            color: #00ff88;
+            border: 2px solid #333;
+            margin: 25px 0;
             cursor: pointer;
+            transition: 0.3s;
         }
+
+        .ip-badge:hover {
+            border-color: #00ff88;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Sekcja Trybów */
+        .modes-title { text-align: center; margin-bottom: 30px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .modes-container {
+            max-width: 1100px;
+            margin: -30px auto 50px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .mode-card {
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .mode-card:hover {
+            border-color: #ff80ed;
+            background: #222;
+        }
+
+        .mode-card h3 { color: #ff80ed; margin-top: 0; }
+        .mode-card p { color: #999; font-size: 0.9rem; }
+
+        /* Discord */
+        .discord-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: #151515;
+            border-top: 1px solid #222;
+        }
+
         .btn-discord {
             display: inline-block;
-            background: #5865F2; /* Kolor Discorda */
+            background: #5865F2;
             color: white;
-            padding: 15px 30px;
+            padding: 18px 45px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: bold;
             font-size: 1.2rem;
-            transition: transform 0.2s;
+            transition: 0.3s;
         }
+
         .btn-discord:hover {
-            transform: scale(1.05);
-            background: #4752c4;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+            transform: scale(1.02);
         }
-        .status {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 10px;
-        }
+
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <section class="hero">
+        <div class="beta-tag">Faza Beta</div>
         <h1>PLAY FLOWER</h1>
-        <p>Dołącz do najlepszej społeczności Minecraft!</p>
-        
-        <div class="ip-box" onclick="copyIP()">
+        <p style="color: #bbb; max-width: 600px;">Tworzymy nową jakość rozgrywki. Wejdź, przetestuj i pomóż nam zbudować najlepszy serwer!</p>
+        <div class="ip-badge" onclick="copyIP()" title="Kliknij, aby skopiować">
             playflower.blackhost.pl
         </div>
-        <p style="font-size: 0.8rem; color: #666;">(Kliknij w IP, aby skopiować - wkrótce!)</p>
+    </section>
 
-        <br>
-
-        <a href="https://discord.gg/3jE3uZZDFj" target="_blank" class="btn-discord">
-            Wbijaj na Discorda
-        </a>
-
-        <div class="status">Wersja serwera: 1.20.x - 1.21.x</div>
+    <h2 class="modes-title">Nasze Tryby</h2>
+    <div class="modes-container">
+        <div class="mode-card">
+            <h3>Survival</h3>
+            <p>Buduj, handluj i przetrwaj w klasycznym wydaniu.</p>
+        </div>
+        <div class="mode-card">
+            <h3>OneBlock</h3>
+            <p>Jeden blok, tysiące możliwości. Dasz radę?</p>
+        </div>
+        <div class="mode-card">
+            <h3>SkyWars</h3>
+            <p>Szybkie potyczki na wyspach. Tylko dla odważnych.</p>
+        </div>
+        <div class="mode-card">
+            <h3>BoxPVP</h3>
+            <p>Czysta walka i szybki postęp. Zostań mistrzem areny.</p>
+        </div>
     </div>
+
+    <section class="discord-section">
+        <h2>Dołącz do ekipy testerów!</h2>
+        <p>Serwer jeszcze nie ruszył pełną parą – bądź jedną z pierwszych osób i miej wpływ na jego rozwój.</p>
+        <br>
+        <a href="https://discord.gg/3jE3uZZDFj" target="_blank" class="btn-discord">
+            WEJDŹ NA DISCORDA
+        </a>
+    </section>
+
+    <footer>
+        &copy; 2026 Play Flower. Strona stworzona przez społeczność serwera.
+    </footer>
 
     <script>
         function copyIP() {
             const ip = "playflower.blackhost.pl";
-            navigator.clipboard.writeText(ip);
-            alert("Skopiowano IP: " + ip);
+            navigator.clipboard.writeText(ip).then(() => {
+                alert("IP Skopiowane! Możesz już dodać serwer do listy w Minecraft.");
+            });
         }
     </script>
 
